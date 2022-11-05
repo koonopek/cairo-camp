@@ -84,6 +84,7 @@ func test_burn_haircut{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_che
     let (start_admin_balance) = Erc20.balanceOf(
         contract_address=contract_address, account=MINT_ADMIN
     );
+    %{print("start_admin_balacne: ",ids.start_admin_balance.low)%}
 
     // Call as test_acc1
     %{ stop_prank_callable = start_prank(ids.TEST_ACC1, ids.contract_address) %}
@@ -115,6 +116,7 @@ func test_burn_haircut{syscall_ptr: felt*, pedersen_ptr: HashBuiltin*, range_che
     let (final_admin_balance) = Erc20.balanceOf(
         contract_address=contract_address, account=MINT_ADMIN
     );
+    %{print("final_admin_balance: ",ids.final_admin_balance.low)%}
 
     // Assert admin's balance increased by 50
     let (admin_diff) = uint256_sub(final_admin_balance, start_admin_balance);
